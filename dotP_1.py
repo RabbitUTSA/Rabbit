@@ -30,12 +30,12 @@ local_n = numpy.array([0])
 #test for conformability
 if rank == 0:
  if (n != y.size):
- print "vector length mismatch"
+  print "vector length mismatch"
  comm.Abort()
  #currently, our program cannot handle sizes that are not evenly
 divided by the number of processors
  if(n % size != 0):
- print "the number of processors must evenly divide n."
+  print "the number of processors must evenly divide n."
  comm.Abort()
  #length of each process's portion of the original vector
  local_n = numpy.array([n/size]) 
