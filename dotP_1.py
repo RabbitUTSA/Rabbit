@@ -7,7 +7,7 @@ Created on Mon Nov 12 11:01:00 2018
 
 #dotProductParallel_1.py
 #"to run" syntax example: mpiexec -n 4 python26
-dotProductParallel_1.py 40000
+#dotProductParallel_1.py 40000
 from mpi4py import MPI
 import numpy
 import sys
