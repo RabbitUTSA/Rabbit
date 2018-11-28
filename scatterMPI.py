@@ -8,7 +8,8 @@ Created on Wed Nov 28 13:16:46 2018
 import os
 import tempfile
 from mpi4py import MPI
-
+import time
+start = time.time()
 comm = MPI.COMM_WORLD
 size = comm.Get_size()
 rank = comm.Get_rank()
@@ -38,7 +39,7 @@ f.Iread(ba)
 f.Close()
 # write buffer to a tempfile
 descriptor, path = tempfile.mkstemp(suffix='mpi.txt')
-print path
+print (path)
 tf = os.fdopen(descriptor, 'w')
 tf.write(ba)
 tf.close()
@@ -54,6 +55,9 @@ os.remove(path)
 result = comm.gather(contents, root=0)
 # do something with result
 if rank == 0:
-    print result
+    print (result)
 else:
     result = None
+
+end = time.time()
+print ("My Rank is: ", rank,"Time to compute: ",end-start)
